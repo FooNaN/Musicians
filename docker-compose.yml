@@ -1,0 +1,15 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: backend.dockerfile
+    command: sh -c "yarn start:dev"
+    ports:
+      - 5000:3000
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: frontend.dockerfile
+    command: sh -c "yarn start"
+    ports:
+      - 3000:3000
