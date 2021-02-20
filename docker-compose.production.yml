@@ -10,6 +10,10 @@ services:
     build:
       context: ./frontend
       dockerfile: frontend.production.dockerfile
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: nginx.production.dockerfile
     entrypoint: nginx -g 'daemon off;'
     ports:
       - 3000:80
