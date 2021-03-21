@@ -3,6 +3,7 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { VenuesModule } from './venues/venues.module'
+import { Venue } from './venues/entities/venue.entity'
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { VenuesModule } from './venues/venues.module'
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [],
+      entities: [Venue],
       synchronize: true,
     }),
     VenuesModule,

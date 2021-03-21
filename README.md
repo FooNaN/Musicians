@@ -20,7 +20,7 @@ Runs specific app service in the development mode
 
 ### `make shut_down_dev`
 
-Shuts down development docker
+Downs development docker
 
 ### Production
 
@@ -34,4 +34,4 @@ Runs specific service in the production mode
 
 ### `make shut_down_prod`
 
-Shuts down production docker
+Downs production docker

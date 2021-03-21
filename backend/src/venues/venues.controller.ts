@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  HttpCode,
 } from '@nestjs/common'
 import { VenuesService } from './venues.service'
 import { CreateVenueDto } from './dto/create-venue.dto'
@@ -36,6 +37,7 @@ export class VenuesController {
   }
 
   @Delete(`:id`)
+  @HttpCode(204)
   remove(@Param(`id`) id: string) {
     return this.venuesService.remove(+id)
   }

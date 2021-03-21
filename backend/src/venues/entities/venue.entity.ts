@@ -1,5 +1,6 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
 
+@Entity()
 export class Venue {
   @PrimaryGeneratedColumn()
   id: number
@@ -9,4 +10,10 @@ export class Venue {
 
   @Column()
   longitude: number
+
+  @Column()
+  name: string
+
+  @Column()
+  description: string
 }
