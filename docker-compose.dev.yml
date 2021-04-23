@@ -1,7 +1,9 @@
-version: "1.0"
+version: "3.8"
 
 services:
   backend:
+    depends_on:
+      - database
     image: node:12-alpine
     working_dir: /app
     volumes:
@@ -11,7 +13,12 @@ services:
     command: sh -c "yarn install && yarn start:dev"
     ports:
       - 5000:3000
+    env_file:
+      - .env
+
   frontend:
+    depends_on:
+      - backend
     image: node:12-alpine
     working_dir: /app
     volumes:
@@ -21,3 +28,18 @@ services:
     ports:
       - 3000:3000
     command: sh -c "yarn install && yarn start"
+
+  database:
+    image: library/postgres:13-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    volumes:
+      - database:/var/lib/postgresql
+    env_file:
+      - .env
+
+volumes:
+  database:

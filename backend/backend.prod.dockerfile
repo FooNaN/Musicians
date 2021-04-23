@@ -1,5 +1,6 @@
-FROM node:12-alpine
+FROM node:alpine
+ENV NODE_ENV production
 COPY . .
 RUN yarn global add @nestjs/cli
-RUN yarn install --production
+RUN yarn install
 RUN yarn build
